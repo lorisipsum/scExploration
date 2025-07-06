@@ -1,0 +1,31 @@
+Package: scExploration
+Type: R Package and Shiny dashboard
+Title: This package enables the user to iteratively explore there Seurat data object as if it were flow data. It is specifically designed to allow the bioinformatician to dynamically disscuss the data with wetlab scientists.
+Version: 0.0.1000
+Authors@R: person(given = "Brian", family = "Thompson", email = "dr.brianthompson1@gmail.com", role = c("aut", "cre"))
+Maintainer: Brian Thompson <dr.brianthompson1@gmail.com>
+Description: scExploration is a shiny dashboard that enables a flow cytometry-like analysis of scRNA-seq and CITE-seq data.
+    The scExploration package was created by Brian Thompson throughout 2024 and 2025.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports: 
+    dplyr,
+    ggplot2,
+    Matrix,
+    methods,
+    plotly,
+    scCustomize,
+    Seurat,
+    shiny,
+    shinydashboard,
+    tidyr,
+    viridis,
+    magrittr,
+    tibble
+Depends: 
+    R (>= 2.10)
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
