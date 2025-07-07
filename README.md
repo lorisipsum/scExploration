@@ -55,17 +55,17 @@ DimPlot(pbmc10k, label = TRUE)
 RNA_Checker(pbmc10k)
 ```
 scExplorer contains very simple to use and self-explanatory tools. It opens a shiny dashboard that enables the user to select a series of markers for the initial biplot. 
-![Image_1](images/image_1)
+![Image_1](/images/image_1)
 
 Once opened, the tool then enables the user to select cells on the biplot with either the box or lasso tools from the plotly package. 
-![Image_2](images/image_2)
+![Image_2](/images/image_2)
 
 Selected cells are then highlighted on the umap and a table created using a selected column from the meta data. The selected cells can then be exported back into the R environment with the **Export Selected Cells** button.
-![Image_3](images/image_3)
+![Image_3](/images/image_3)
 
 This process can also proceed forward from the umap via the Cluster Selection tab. 
-![Image_4](images/image_4)
-![Image_5](images/image_5)
+![Image_4](/images/image_4)
+![Image_5](/images/image_5)
 
 
 ## Description
