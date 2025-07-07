@@ -15,6 +15,57 @@ library(scExplorer)
 ```
 
 ## Usage
+Here is a simple demonstration that comes from the 10X Genomics PBMC dataset
+
+```{r}
+pbmc10k.data <- Read10X(data.dir = "filtered_feature_bc_matrix/")
+rownames(x = pbmc10k.data[["Antibody Capture"]]) <- gsub(pattern = "_[control_]*TotalSeqB", replacement = "",
+    x = rownames(x = pbmc10k.data[["Antibody Capture"]]))
+
+pbmc10k <- CreateSeuratObject(counts = pbmc10k.data[["Gene Expression"]], min.cells = 3, min.features = 200)
+pbmc10k <- NormalizeData(pbmc10k)
+pbmc10k[["ADT"]] <- CreateAssayObject(pbmc10k.data[["Antibody Capture"]][, colnames(x = pbmc10k)])
+pbmc10k <- NormalizeData(pbmc10k, assay = "ADT", normalization.method = "CLR")
+
+plot1 <- FeatureScatter(pbmc10k, feature1 = "adt_CD19", feature2 = "adt_CD3", pt.size = 1)
+plot2 <- FeatureScatter(pbmc10k, feature1 = "adt_CD4", feature2 = "adt_CD8a", pt.size = 1)
+plot3 <- FeatureScatter(pbmc10k, feature1 = "adt_CD3", feature2 = "CD3E", pt.size = 1)
+(plot1 + plot2 + plot3) & NoLegend()
+
+
+# Note that all operations below are performed on the RNA assay Set and verify that the
+# default assay is RNA
+DefaultAssay(pbmc10k) <- "RNA"
+DefaultAssay(pbmc10k)
+
+
+
+# perform visualization and clustering steps
+pbmc10k <- NormalizeData(pbmc10k)
+pbmc10k <- FindVariableFeatures(pbmc10k)
+pbmc10k <- ScaleData(pbmc10k)
+pbmc10k <- RunPCA(pbmc10k, verbose = FALSE)
+pbmc10k <- FindNeighbors(pbmc10k, dims = 1:30)
+pbmc10k <- FindClusters(pbmc10k, resolution = 0.8, verbose = FALSE)
+pbmc10k <- RunUMAP(pbmc10k, dims = 1:30)
+DimPlot(pbmc10k, label = TRUE)
+```
+
+```{r}
+RNA_Checker(pbmc10k)
+```
+scExplorer contains very simple to use and self-explanatory tools. It opens a shiny dashboard that enables the user to select a series of markers for the initial biplot. 
+![Image_1](images/image_1)
+
+Once opened, the tool then enables the user to select cells on the biplot with either the box or lasso tools from the plotly package. 
+![Image_2](images/image_2)
+
+Selected cells are then highlighted on the umap and a table created using a selected column from the meta data. The selected cells can then be exported back into the R environment with the **Export Selected Cells** button.
+![Image_3](images/image_3)
+
+This process can also proceed forward from the umap via the Cluster Selection tab. 
+![Image_4](images/image_4)
+![Image_5](images/image_5)
 
 
 ## Description
