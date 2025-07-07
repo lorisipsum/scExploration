@@ -67,6 +67,11 @@ This process can also proceed forward from the umap via the Cluster Selection ta
 ![Image_4](/images/image_4.png)
 ![Image_5](/images/image_5.png)
 
+One can also look at multimodal (i.e., CITE-seq) data. This process is very similar to the RNA modality analysis but now enables simultaneous plotting of both ADT and RNA data on the biplots. 
+
+```{r}
+ADT_Checker(pbmc10k)
+```
 
 ## Description
 Package: scExplorer
