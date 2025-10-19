@@ -15,7 +15,7 @@ library(scExploration)
 ```
 
 ## Usage
-Here is a simple demonstration that comes from the 10X Genomics PBMC dataset
+Here is a simple demonstration that comes from the freely available 10X Genomics PBMC dataset
 
 ```{r}
 pbmc10k.data <- Read10X(data.dir = "filtered_feature_bc_matrix/")
