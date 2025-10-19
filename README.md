@@ -11,7 +11,7 @@ if (!require("devtools"))
   install.packages("devtools")
 
 devtools::install_github("lorisipsum/scExploration")
-library(scExplorer)
+library(scExploration)
 ```
 
 ## Usage
